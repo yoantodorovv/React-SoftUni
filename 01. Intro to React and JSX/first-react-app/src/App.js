@@ -1,21 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Advertisement from "./components/Advertisement";
+import EventInfo from "./components/EventInfo";
+import EventSchedule from "./components/EventSchedule";
+import Footer from "./components/Footer";
+import HeroSection from "./components/HeroSection";
+import Navigation from "./components/Navigation";
+import SpeakersInfo from "./components/SpeakersInfo";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Edited :)</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Navigation />
+      <HeroSection />
+      <div className="container">
+        <EventInfo />
+        <SpeakersInfo />
+      </div>
+      <Advertisement />
+      <EventSchedule />
+      <Footer />
     </div>
   );
 }
