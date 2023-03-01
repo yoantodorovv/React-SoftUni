@@ -7,6 +7,7 @@ import TodoList from "./assets/TodoList";
 
 function App() {
     const [todoList, setTodoList] = useState([]);
+    const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3030/jsonstore/todos`)
@@ -14,16 +15,18 @@ function App() {
             .then(data => {
                 const result = Object.keys(data).map(id => ({id: id, ...data[id]}));
                 setTodoList(result);
+                setIsMounted(true);
             })
     }, []);
 
     const toggleTodoStatusHandler = (id) => {
-        setTodoList(state => state.map(x => x.id === id ? ({...x, isCompleted: !x.isCompleted}) : x));
+        setTodoList(state => state.map(x => x._id === id ? ({...x, isCompleted: !x.isCompleted}) : x));
     }
 
     const addTodoHandler = () => {
-        const prevId = todoList[todoList.length - 1].id;
-        console.log(prevId);
+        const prevId = Number(todoList[todoList.length - 1]._id.substring(5));
+        const text = prompt('Todo text:');
+        setTodoList(state => [{_id: `todo_${prevId + 1}`, text: text, isCompleted: false}, ...state])
     }
 
     return (
@@ -42,9 +45,12 @@ function App() {
 
                     <div className="table-wrapper">
 
-                        {/* <Loader /> */}
+                        {
+                            isMounted
+                            ? <TodoList todoList={todoList} toggleTodoStatusHandler={toggleTodoStatusHandler} />
+                            : <Loader />
+                        }
 
-                        <TodoList todoList={todoList} toggleTodoStatusHandler={toggleTodoStatusHandler} />
                     </div>
                 </section>
             </main>
