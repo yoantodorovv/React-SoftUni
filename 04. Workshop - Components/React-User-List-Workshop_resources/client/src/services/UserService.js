@@ -10,4 +10,14 @@ export const getById = (id) =>
         .then(res => res.json())
         .then(data => data.user);
 
-//export const 
+export const addUser = (data) => 
+    fetch(baseUrl, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))

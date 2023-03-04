@@ -2,30 +2,42 @@ import { useState } from 'react';
 
 import * as userService from '../services/UserService';
 
+import EditUser from './EditUser';
 import User from './User'
 import UserDetails from './UserDetails'
 
 const UserList = ({
     users,
 }) => {
-    const [selectedUser, setSelectedUser] = useState(null);
+    const [selectedEditUser, setSelectedEditUser] = useState(null);
+    const [selectedInfoUser, setSelectedInfoUser] = useState(null);
+
+    const onEditClick = (id) => {
+        userService.getById(id)
+            .then(setSelectedEditUser)
+            .catch(err => console.log(err));
+    }
 
     const onInfoClick = (id) => {
         userService.getById(id)
-            .then(setSelectedUser)
-            .catch(err => {
-                console.log(err);
-            });
+            .then(setSelectedInfoUser)
+            .catch(err => console.log(err));
     }
 
-    const onCloseInfo = () => setSelectedUser(null);
+    const onCloseEdit = () => selectedEditUser(null);
+    const onCloseInfo = () => selectedInfoUser(null);
 
     return (
         <>
             {
-                selectedUser !== null
-                ? <UserDetails {...selectedUser} onCloseInfo={onCloseInfo} />
+                selectedInfoUser !== null
+                ? <UserDetails {...selectedInfoUser} onCloseInfo={onCloseInfo} />
                 :  null
+            }
+            {
+                selectedEditUser !== null
+                ? <EditUser {...selectedEditUser} onCloseInfo={onCloseInfo} />
+                : null
             }
             <div className="table-wrapper">
 
@@ -147,7 +159,7 @@ const UserList = ({
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(x => <User key={x._id} {...x} onInfoClick={onInfoClick} />)}
+                        {users.map(x => <User key={x._id} {...x} onInfoClick={onInfoClick} onEditClick={onEditClick} />)}
                     </tbody>
                 </table>
             </div>

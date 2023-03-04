@@ -32,9 +32,8 @@ function App() {
         const data = new FormData(e.currentTarget);
         const values = Object.fromEntries(data.entries());
 
-        const userDto = userDtos.getDto(values);
-
-        
+        const userData = userDtos.getDto(values);
+        userService.addUser(userData);
     }
 
     const onAddClose = () => setIsSelected(false);
