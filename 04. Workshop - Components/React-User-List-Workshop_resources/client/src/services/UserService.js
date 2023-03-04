@@ -9,3 +9,5 @@ export const getById = (id) =>
     fetch(`${baseUrl}/${id}`)
         .then(res => res.json())
         .then(data => data.user);
+
+//export const 

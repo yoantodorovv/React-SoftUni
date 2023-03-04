@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import * as userService from './services/UserService';
+import * as userDtos from './DTOs/UserDto';
 
 import Header from './assets/Header'
 import Footer from './assets/Footer'
@@ -9,9 +10,11 @@ import UserList from './assets/UserList'
 import Pagination from './assets/Pagination'
 
 import './App.css';
+import AddUser from './assets/AddUser';
 
 function App() {
     const [users, setUsers] = useState([]);
+    const [isSelected, setIsSelected] = useState(false);
 
     useEffect(() => {
         userService.getAll()
@@ -21,17 +24,37 @@ function App() {
             });
     }, []);
 
+    const onAddUser = () => setIsSelected(true);
+
+    const onAddSubmit = (e) => {
+        e.preventDefault();
+
+        const data = new FormData(e.currentTarget);
+        const values = Object.fromEntries(data.entries());
+
+        const userDto = userDtos.getDto(values);
+
+        
+    }
+
+    const onAddClose = () => setIsSelected(false);
+
     return (
         <>
             <Header />
-                <main className="main">
-                    <section className="card users-container">
-                        <Search />
-                        <UserList users={users} />
-                        <button className="btn-add btn">Add new user</button>
-                        <Pagination />
-                    </section>
-                </main>
+            <main className="main">
+                {
+                    isSelected
+                    ? <AddUser onAddSubmit={onAddSubmit} onAddClose={onAddClose} />
+                    : null
+                }
+                <section className="card users-container">
+                    <Search />
+                    <UserList users={users} />
+                    <button className="btn-add btn" onClick={() => onAddUser()}>Add new user</button>
+                    <Pagination />
+                </section>
+            </main>
             <Footer />
         </>
     )
