@@ -8,7 +8,7 @@ const EditUser = ({
     address,
     createdAt,
     updatedAt,
-    onEditInfo,
+    onCloseEdit,
 }) => {
     return (
         <div className="overlay">
@@ -17,7 +17,7 @@ const EditUser = ({
                 <div className="user-container">
                     <header className="headers">
                         <h2>Edit User</h2>
-                        <button className="btn close" onClick={() => onEditInfo(_id)}>
+                        <button className="btn close" onClick={() => onCloseEdit(_id)}>
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="xmark"
                                 className="svg-inline--fa fa-xmark" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                                 <path fill="currentColor"
@@ -125,7 +125,7 @@ const EditUser = ({
                         </div>
                         <div id="form-actions">
                             <button id="action-save" className="btn" type="submit">Save</button>
-                            <button id="action-cancel" className="btn" type="button" onClick={() => onEditInfo(_id)}>Cancel</button>
+                            <button id="action-cancel" className="btn" type="button" onClick={() => onCloseEdit(_id)}>Cancel</button>
                         </div>
                     </form>
                 </div>

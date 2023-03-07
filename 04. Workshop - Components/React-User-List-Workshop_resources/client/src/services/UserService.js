@@ -10,6 +10,18 @@ export const getById = (id) =>
         .then(res => res.json())
         .then(data => data.user);
 
+export const deleteUserById = (id) => 
+    fetch(`${baseUrl}/${id}`, {
+        method: 'DELETE',
+    })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+
+            return data;
+        })
+        .catch(err => console.log(err));
+
 export const addUser = (data) => 
     fetch(baseUrl, {
         method: 'POST',
@@ -19,5 +31,5 @@ export const addUser = (data) =>
         body: JSON.stringify(data),
     })
         .then(res => res.json())
-        .then(data => console.log(data))
+        .then(data => data.user)
         .catch(err => console.log(err))

@@ -24,6 +24,13 @@ function App() {
             });
     }, []);
 
+    const onDeleteClick = (id) => {
+        userService.deleteUserById(id)
+            .catch(err => console.log(err));
+
+        setUsers(state => state.filter(x => x._id != id))
+    }
+
     const onAddUser = () => setIsSelected(true);
 
     const onAddSubmit = (e) => {
@@ -33,7 +40,11 @@ function App() {
         const values = Object.fromEntries(data.entries());
 
         const userData = userDtos.getDto(values);
-        userService.addUser(userData);
+        userService.addUser(userData)
+            .then(user => setUsers(state => [...state, user]))
+            .catch(err => console.log(err));
+
+        onAddClose();
     }
 
     const onAddClose = () => setIsSelected(false);
@@ -49,7 +60,7 @@ function App() {
                 }
                 <section className="card users-container">
                     <Search />
-                    <UserList users={users} />
+                    <UserList users={users} onDeleteClick={onDeleteClick} />
                     <button className="btn-add btn" onClick={() => onAddUser()}>Add new user</button>
                     <Pagination />
                 </section>

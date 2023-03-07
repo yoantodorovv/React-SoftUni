@@ -8,6 +8,7 @@ import UserDetails from './UserDetails'
 
 const UserList = ({
     users,
+    onDeleteClick,
 }) => {
     const [selectedEditUser, setSelectedEditUser] = useState(null);
     const [selectedInfoUser, setSelectedInfoUser] = useState(null);
@@ -17,15 +18,15 @@ const UserList = ({
             .then(setSelectedEditUser)
             .catch(err => console.log(err));
     }
-
+    
     const onInfoClick = (id) => {
         userService.getById(id)
             .then(setSelectedInfoUser)
             .catch(err => console.log(err));
     }
 
-    const onCloseEdit = () => selectedEditUser(null);
-    const onCloseInfo = () => selectedInfoUser(null);
+    const onCloseEdit = () => setSelectedEditUser(null);
+    const onCloseInfo = () => setSelectedInfoUser(null);
 
     return (
         <>
@@ -36,7 +37,7 @@ const UserList = ({
             }
             {
                 selectedEditUser !== null
-                ? <EditUser {...selectedEditUser} onCloseInfo={onCloseInfo} />
+                ? <EditUser {...selectedEditUser} onCloseEdit={onCloseEdit} />
                 : null
             }
             <div className="table-wrapper">
@@ -159,7 +160,14 @@ const UserList = ({
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map(x => <User key={x._id} {...x} onInfoClick={onInfoClick} onEditClick={onEditClick} />)}
+                        {users?.map(x => 
+                            <User 
+                                key={x._id} {...x} 
+                                onInfoClick={onInfoClick} 
+                                onEditClick={onEditClick} 
+                                onDeleteClick={onDeleteClick} 
+                            />
+                        )}
                     </tbody>
                 </table>
             </div>
