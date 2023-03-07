@@ -22,6 +22,22 @@ export const deleteUserById = (id) =>
         })
         .catch(err => console.log(err));
 
+export const updateById = (id, data) => 
+    fetch(`${baseUrl}/${id}`, {
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    }) 
+        .then(res => res.json())
+        .then(data => {
+            console.log(data.user)
+
+            return data.user;
+        })
+        .catch(err => console.log(err))
+
 export const addUser = (data) => 
     fetch(baseUrl, {
         method: 'POST',

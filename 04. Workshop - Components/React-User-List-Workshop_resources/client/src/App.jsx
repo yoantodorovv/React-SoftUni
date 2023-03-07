@@ -47,6 +47,25 @@ function App() {
         onAddClose();
     }
 
+    const onEditSubmitHandler = (e) => {
+        e.preventDefault();
+
+        const data = new FormData(e.currentTarget);
+        const values = Object.fromEntries(data.entries());
+
+        const userData = userDtos.getDto(values);
+        userService.updateById(values._id, userData)
+            .then(user => {
+                setUsers(state => {
+                    const newStateArr = state.filter(x => x._id !== values._id);
+
+                    return state = [...newStateArr, user];
+                });
+            })
+
+        
+    }
+
     const onAddClose = () => setIsSelected(false);
 
     return (
@@ -60,7 +79,7 @@ function App() {
                 }
                 <section className="card users-container">
                     <Search />
-                    <UserList users={users} onDeleteClick={onDeleteClick} />
+                    <UserList users={users} onDeleteClick={onDeleteClick} onEditSubmitHandler={onEditSubmitHandler} />
                     <button className="btn-add btn" onClick={() => onAddUser()}>Add new user</button>
                     <Pagination />
                 </section>

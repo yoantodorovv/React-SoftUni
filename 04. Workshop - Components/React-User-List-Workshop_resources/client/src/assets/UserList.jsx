@@ -9,6 +9,7 @@ import UserDetails from './UserDetails'
 const UserList = ({
     users,
     onDeleteClick,
+    onEditSubmitHandler,
 }) => {
     const [selectedEditUser, setSelectedEditUser] = useState(null);
     const [selectedInfoUser, setSelectedInfoUser] = useState(null);
@@ -25,6 +26,11 @@ const UserList = ({
             .catch(err => console.log(err));
     }
 
+    const onEditSubmit = (e) => {
+        onEditSubmitHandler(e);
+        onCloseEdit();
+    }
+
     const onCloseEdit = () => setSelectedEditUser(null);
     const onCloseInfo = () => setSelectedInfoUser(null);
 
@@ -37,7 +43,7 @@ const UserList = ({
             }
             {
                 selectedEditUser !== null
-                ? <EditUser {...selectedEditUser} onCloseEdit={onCloseEdit} />
+                ? <EditUser {...selectedEditUser} onCloseEdit={onCloseEdit} onEditSubmit={onEditSubmit} />
                 : null
             }
             <div className="table-wrapper">
