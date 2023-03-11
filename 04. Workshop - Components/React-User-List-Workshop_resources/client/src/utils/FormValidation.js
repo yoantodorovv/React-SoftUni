@@ -57,9 +57,7 @@ export const street = (value) => {
 }
 
 export const streetNumber = (value) => {
-    if (typeof value !== 'number') {
-        return 'Street should be a number!';
-    } else if (Number(value) < 0) {
+    if (Number(value) < 0) {
         return 'Street should not be a negative number!'
     }
 }

@@ -17,6 +17,7 @@ function App() {
     const [users, setUsers] = useState([]);
     const [isSelected, setIsSelected] = useState(false);
     const [formValues, setFormValues] = useState({
+        id: '',
         firstName: '',
         lastName: '',
         email: '',
@@ -70,11 +71,8 @@ function App() {
     const onEditSubmitHandler = (e) => {
         e.preventDefault();
 
-        const data = new FormData(e.currentTarget);
-        const values = Object.fromEntries(data.entries());
-
-        const userData = userDtos.getDto(values);
-        userService.updateById(values._id, userData)
+        const userData = userDtos.getDto(formValues);
+        userService.updateById(formValues.id, userData)
             .then(user => {
                 setUsers(state => {
                     const newStateArr = state.filter(x => x._id !== values._id);
@@ -82,8 +80,6 @@ function App() {
                     return state = [...newStateArr, user];
                 });
             })
-
-        
     }
 
     const onAddClose = () => setIsSelected(false);
@@ -129,7 +125,15 @@ function App() {
                 }
                 <section className="card users-container">
                     <Search />
-                    <UserList users={users} onDeleteClick={onDeleteClick} onEditSubmitHandler={onEditSubmitHandler} />
+                    <UserList
+                        users={users}
+                        onDeleteClick={onDeleteClick}
+                        onEditSubmitHandler={onEditSubmitHandler}
+                        formValues={formValues}
+                        formErrors={formErrors}
+                        onFormChangeHandler={onFormChangeHandler}
+                        onFormBlurHandler={onFormBlurHandler}
+                    />
                     <button className="btn-add btn" onClick={() => onAddUser()}>Add new user</button>
                     <Pagination />
                 </section>

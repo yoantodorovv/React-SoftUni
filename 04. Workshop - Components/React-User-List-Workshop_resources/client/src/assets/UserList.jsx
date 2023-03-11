@@ -10,13 +10,19 @@ const UserList = ({
     users,
     onDeleteClick,
     onEditSubmitHandler,
+    formValues,
+    formErrors,
+    onFormChangeHandler,
+    onFormBlurHandler,
 }) => {
     const [selectedEditUser, setSelectedEditUser] = useState(null);
     const [selectedInfoUser, setSelectedInfoUser] = useState(null);
 
     const onEditClick = (id) => {
         userService.getById(id)
-            .then(setSelectedEditUser)
+            .then(user => {
+                setSelectedEditUser(user);
+            })
             .catch(err => console.log(err));
     }
     
@@ -43,7 +49,15 @@ const UserList = ({
             }
             {
                 selectedEditUser !== null
-                ? <EditUser {...selectedEditUser} onCloseEdit={onCloseEdit} onEditSubmit={onEditSubmit} />
+                ? <EditUser 
+                    {...selectedEditUser}
+                    onCloseEdit={onCloseEdit}
+                    onEditSubmit={onEditSubmit}
+                    formValues={formValues}
+                    formErrors={formErrors}
+                    onFormChangeHandler={onFormChangeHandler}
+                    onFormBlurHandler={onFormBlurHandler}
+                />
                 : null
             }
             <div className="table-wrapper">
