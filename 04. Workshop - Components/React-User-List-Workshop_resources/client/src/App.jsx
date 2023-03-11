@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import * as userService from './services/UserService';
 import * as userDtos from './DTOs/UserDto';
+import * as validate from './utils/FormValidation';
 
 import Header from './assets/Header'
 import Footer from './assets/Footer'
@@ -15,6 +16,28 @@ import AddUser from './assets/AddUser';
 function App() {
     const [users, setUsers] = useState([]);
     const [isSelected, setIsSelected] = useState(false);
+    const [formValues, setFormValues] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        imageUrl: '',
+        country: '',
+        city: '',
+        street: '',
+        streetNumber: '',
+    });
+    const [formErrors, setFormErrors] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        imageUrl: '',
+        country: '',
+        city: '',
+        street: '',
+        streetNumber: '',
+    });
 
     useEffect(() => {
         userService.getAll()
@@ -36,10 +59,7 @@ function App() {
     const onAddSubmit = (e) => {
         e.preventDefault();
 
-        const data = new FormData(e.currentTarget);
-        const values = Object.fromEntries(data.entries());
-
-        const userData = userDtos.getDto(values);
+        const userData = userDtos.getDto(formValues);
         userService.addUser(userData)
             .then(user => setUsers(state => [...state, user]))
             .catch(err => console.log(err));
@@ -68,13 +88,43 @@ function App() {
 
     const onAddClose = () => setIsSelected(false);
 
+    const onFormChangeHandler = (e) =>
+        setFormValues(state => ({...state, [e.target.name]: e.target.value}));
+
+    const onFormBlurHandler = (e) => {
+        const errFunctions = {
+            firstName: validate.firstName,
+            lastName: validate.lastName,
+            email: validate.email,
+            phoneNumber: validate.phoneNumber,
+            imageUrl: validate.imageUrl,
+            country: validate.country,
+            city: validate.city,
+            street: validate.street,
+            streetNumber: validate.streetNumber,
+        }
+
+        const err = errFunctions[e.target.name](e.target.value);
+
+        console.log(err);
+
+        return setFormErrors(state => ({...state, [e.target.name]: err}));
+    }
+
     return (
         <>
             <Header />
             <main className="main">
                 {
                     isSelected
-                    ? <AddUser onAddSubmit={onAddSubmit} onAddClose={onAddClose} />
+                    ? <AddUser
+                        onAddSubmit={onAddSubmit}
+                        onAddClose={onAddClose}
+                        formValues={formValues}
+                        formErrors={formErrors}
+                        onFormChangeHandler={onFormChangeHandler}
+                        onFormBlurHandler={onFormBlurHandler}
+                     />
                     : null
                 }
                 <section className="card users-container">
