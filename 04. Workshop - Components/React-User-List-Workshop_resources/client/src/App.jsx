@@ -16,6 +16,7 @@ import AddUser from './assets/AddUser';
 function App() {
     const [users, setUsers] = useState([]);
     const [isSelected, setIsSelected] = useState(false);
+    const [selectedEditUser, setSelectedEditUser] = useState(null);
     const [formValues, setFormValues] = useState({
         id: '',
         firstName: '',
@@ -55,7 +56,21 @@ function App() {
         setUsers(state => state.filter(x => x._id != id))
     }
 
-    const onAddUser = () => setIsSelected(true);
+    const onAddUser = () => {
+        setIsSelected(true);
+        setFormValues({
+            id: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            phoneNumber: '',
+            imageUrl: '',
+            country: '',
+            city: '',
+            street: '',
+            streetNumber: '',
+        });
+    }
 
     const onAddSubmit = (e) => {
         e.preventDefault();
@@ -72,15 +87,48 @@ function App() {
         e.preventDefault();
 
         const userData = userDtos.getDto(formValues);
+
+        console.log(formValues.id);
+
         userService.updateById(formValues.id, userData)
             .then(user => {
                 setUsers(state => {
-                    const newStateArr = state.filter(x => x._id !== values._id);
+                    const newStateArr = state.filter(x => x._id !== formValues.id);
 
                     return state = [...newStateArr, user];
                 });
             })
     }
+
+    const onEditClick = (id) => {
+        userService.getById(id)
+            .then(user => {
+                setSelectedEditUser(user);
+
+                const formValuesDto = {
+                    id: user._id,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    email: user.email,
+                    phoneNumber: user.phoneNumber,
+                    imageUrl: user.imageUrl,
+                    country: user.address.country,
+                    city: user.address.city,
+                    street: user.address.street,
+                    streetNumber: user.address.streetNumber,
+                }
+
+                setFormValues(formValuesDto);
+            })
+            .catch(err => console.log(err));
+    }
+
+    const onEditSubmit = (e) => {
+        onEditSubmitHandler(e);
+        onCloseEdit();
+    }
+
+    const onCloseEdit = () => setSelectedEditUser(null);
 
     const onAddClose = () => setIsSelected(false);
 
@@ -127,6 +175,10 @@ function App() {
                     <Search />
                     <UserList
                         users={users}
+                        selectedEditUser={selectedEditUser}
+                        onEditClick={onEditClick}
+                        onCloseEdit={onCloseEdit}
+                        onEditSubmit={onEditSubmit}
                         onDeleteClick={onDeleteClick}
                         onEditSubmitHandler={onEditSubmitHandler}
                         formValues={formValues}

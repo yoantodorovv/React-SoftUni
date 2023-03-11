@@ -8,6 +8,10 @@ import UserDetails from './UserDetails'
 
 const UserList = ({
     users,
+    selectedEditUser,
+    onEditClick,
+    onCloseEdit,
+    onEditSubmit,
     onDeleteClick,
     onEditSubmitHandler,
     formValues,
@@ -15,29 +19,14 @@ const UserList = ({
     onFormChangeHandler,
     onFormBlurHandler,
 }) => {
-    const [selectedEditUser, setSelectedEditUser] = useState(null);
     const [selectedInfoUser, setSelectedInfoUser] = useState(null);
 
-    const onEditClick = (id) => {
-        userService.getById(id)
-            .then(user => {
-                setSelectedEditUser(user);
-            })
-            .catch(err => console.log(err));
-    }
-    
     const onInfoClick = (id) => {
         userService.getById(id)
             .then(setSelectedInfoUser)
             .catch(err => console.log(err));
     }
 
-    const onEditSubmit = (e) => {
-        onEditSubmitHandler(e);
-        onCloseEdit();
-    }
-
-    const onCloseEdit = () => setSelectedEditUser(null);
     const onCloseInfo = () => setSelectedInfoUser(null);
 
     return (

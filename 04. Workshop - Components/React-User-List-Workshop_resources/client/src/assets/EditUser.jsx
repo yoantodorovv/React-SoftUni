@@ -24,7 +24,7 @@ const EditUser = ({
                         </button>
                     </header>
                     <form onSubmit={onEditSubmit}>
-                        <input type="hidden" name="id" value={_id} />
+                        <input type="hidden" name="id" id="id" value={_id} />
                         <div className="form-row">
                             <div className="form-group">
                                 <label htmlFor="firstName">First name</label>
@@ -130,7 +130,7 @@ const EditUser = ({
                         </div>
                         <div id="form-actions">
                             <button id="action-save" className="btn" type="submit">Save</button>
-                            <button id="action-cancel" className="btn" type="button" onClick={() => onAddClose()} >Cancel</button>
+                            <button id="action-cancel" className="btn" type="button" onClick={() => onCloseEdit()} >Cancel</button>
                         </div>
                     </form>
                 </div>
