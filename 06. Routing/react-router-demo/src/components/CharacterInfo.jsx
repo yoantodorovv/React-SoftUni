@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 
 import { useParams, useNavigate, Link, Routes, Route } from 'react-router-dom'
 import CharacterFilms from './CharacterFilms';
+import NavigationWrapper from './NavigationWrapper';
 
 import styles from './Navigation.module.css'
 
@@ -35,13 +36,11 @@ const CharacterInfo = () => {
             <button onClick={onHomeBtnClick}>Home</button>
             <button onClick={onBackBtnClick}>Back</button>
 
-            <nav className={styles.nav}>
-                <ul>
+            <NavigationWrapper>
                     <li><Link to="films">Films</Link></li>
                     <li><Link to="vehicles">Vehicles</Link></li>
                     <li><Link to="starships">Starships</Link></li>
-                </ul>
-            </nav>
+            </NavigationWrapper>
 
             <Routes>
                 <Route path="films" element={<CharacterFilms />} />
