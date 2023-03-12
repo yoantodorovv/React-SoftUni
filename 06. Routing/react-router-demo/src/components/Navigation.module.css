@@ -1,0 +1,19 @@
+.nav li { 
+    display: inline;
+    list-style: none;
+    margin-left: 20px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav li:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.nav .nav-active {
+    color: blue;
+}
