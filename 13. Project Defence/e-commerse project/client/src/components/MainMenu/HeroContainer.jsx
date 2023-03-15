@@ -9,7 +9,7 @@ export const HeroContainer = ({
     return (
         <div className={styles['container']}>
             <img className={styles['menu-img']} src={imageSrc} alt={`${containerText} image`} />
-            <NavLink className={styles['overlay']} to={`/${containerText.toLowerCase()}`}>
+            <NavLink className={styles['overlay']} to={`/catalog/${containerText.toLowerCase()}`}>
                 <div className={styles['overlay-text']}>{containerText}</div>
             </NavLink>
         </div>

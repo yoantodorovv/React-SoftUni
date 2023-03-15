@@ -6,9 +6,9 @@ export const FooterNavigation = () => {
         'Home': '/',
         'About': '/about',
         'Contact': '/contact',
-        'Catalog': 'catalog',
-        'Women': '/women',
-        'Men': '/men',
+        'Catalog': '/catalog',
+        'Women': 'catalog/women',
+        'Men': 'catalog/men',
     }
 
     const profileRoutes = {
