@@ -1,4 +1,4 @@
-import styles from "./MainMenu.module.css";
+import styles from "./MainMenu.module.scss";
 
 export const HeroContainer = ({
     imageSrc,

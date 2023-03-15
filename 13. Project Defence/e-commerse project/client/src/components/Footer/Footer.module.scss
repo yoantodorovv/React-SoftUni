@@ -1,0 +1,17 @@
+$brown-primary: #6c3d1f;
+$white-primary: #dbcec3;
+
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+    width: 100%;
+    background-color: $brown-primary;
+    color: $white-primary;
+
+    .logo {
+        color: $white-primary;
+    }
+}
+
