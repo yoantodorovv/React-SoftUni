@@ -120,24 +120,11 @@ nav
     text-align: center;
 }
 
+/* --------------------------------------------------- */
+
 .img2
 {
     height: 30em;
-}
-
-hr
-{
-    margin-top: 25px;
-    margin-bottom: 25px;
-    width: 92%;
-    border: 3px solid rgb(108, 61, 31);
-    border-radius: 16px;
-}
-
-.hr
-{
-    display: flex;
-    justify-content: center;
 }
 
 .title
