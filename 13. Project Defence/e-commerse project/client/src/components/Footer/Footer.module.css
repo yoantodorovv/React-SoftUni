@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-flow: row nowrap;
+    width: 100%;
+    background-color: #6c3d1f;
+    color: #dbcec3;
+}
+
+.logo {
+    color: #dbcec3;
+}
