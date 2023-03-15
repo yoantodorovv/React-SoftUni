@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom"
+
 import styles from "./Header.module.scss";
 
 export const Navigation = () => {
@@ -5,22 +7,25 @@ export const Navigation = () => {
         <nav className={styles['nav']}>
             <ul className={styles['nav-btn-list']}>
                 <li className={styles['nav-btn-list-item']}>
-                    <a className={styles['nav-btn-li-link']} href="/">Home</a>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/">Home</NavLink>
                 </li>
                 <li className={styles['nav-btn-list-item']}>
-                    <a className={styles['nav-btn-li-link']} href="women.html">Women</a>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/about">About</NavLink>
                 </li>
                 <li className={styles['nav-btn-list-item']}>
-                    <a className={styles['nav-btn-li-link']} href="men.html">Men</a>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/contact">Contact</NavLink>
                 </li>
                 <li className={styles['nav-btn-list-item']}>
-                    <a className={styles['nav-btn-li-link']} href="men.html">Login</a>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/catalog">Catalog</NavLink>
                 </li>
                 <li className={styles['nav-btn-list-item']}>
-                    <a className={styles['nav-btn-li-link']} href="men.html">Register</a>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/login">Login</NavLink>
+                </li>
+                <li className={styles['nav-btn-list-item']}>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/register">Register</NavLink>
                 </li>
                 {/* <li className={styles['nav-btn-list-item']}>
-                    <a className={styles['nav-btn-li-link']} href="men.html">Logout</a>
+                    <NavLink className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} to="/logout">Logout</NavLink>
                 </li> */}
             </ul>
         </nav>

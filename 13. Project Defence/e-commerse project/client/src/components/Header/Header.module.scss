@@ -6,7 +6,7 @@ $white-primary: #dbcec3;
     align-items: center;
     flex-flow: row nowrap;
     width: 100%;
-    height: 13vh;
+    height: 15vh;
     border-bottom: 2px solid $brown-primary;
 
     .logo {
@@ -30,28 +30,32 @@ $white-primary: #dbcec3;
     }
 }
 
-.nav-btn-list-item {
-    padding: 1em 2em;
-    border: 2px solid $brown-primary;
+.nav-btn-li-link {
     border-radius: 25px;
+    padding: .3em 1em;
+    border: 2px solid $brown-primary;
+    font-size: 20px;
+    color: $brown-primary;
+    text-decoration: none;
     transition: .2s ease-in;
-
-    .nav-btn-li-link {
-        font-size: 20px;
-        color: $brown-primary;
-        text-decoration: none;
-    }
 }
 
-.nav-btn-list-item:hover {
+.nav-btn-li-link:hover {
     background-color: $brown-primary;
-    cursor: pointer;
+    color: $white-primary;
+    padding: .3em 1em;
 }
 
-.nav-btn-list-item:hover .nav-btn-li-link {
+.nav-btn-li-link-selected {
+    border-radius: 25px;
+    padding: .5em 1em;
+    background-color: $brown-primary;
+    border: 2px solid $brown-primary;
+    font-size: 20px;
+    text-decoration: none;
     color: $white-primary;
-    cursor: pointer;
 }
+
 
 
 

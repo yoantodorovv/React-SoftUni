@@ -6,6 +6,7 @@ export const FooterNavigation = () => {
         'Home': '/',
         'About': '/about',
         'Contact': '/contact',
+        'Catalog': 'catalog',
         'Women': '/women',
         'Men': '/men',
     }
@@ -20,13 +21,6 @@ export const FooterNavigation = () => {
         <div className={styles['footer-nav']}>
             <FooterNavigationElement title="Pages" options={pagesRoutes}/>
             <FooterNavigationElement title="Your Profile" options={profileRoutes} />
-            {/* // <div className={styles['footer-map']}>
-            //     <h2 className={styles['footer-titles']}>Your Profile</h2>
-            //     <div className={styles['options-wrapper']}>
-            //         <a href="/" className={styles['footer-options']}>Login</a>
-            //         <a href="/" className={styles['footer-options']}>Register</a>
-            //     </div>
-            // </div> */}
             <div className="footer-map">
                 <h2 className={styles['footer-titles']}>Follow Us On</h2>
                 <div className={styles['img-wrapper']}>
