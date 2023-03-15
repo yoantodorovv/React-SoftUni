@@ -9,13 +9,13 @@ $white-primary: #dbcec3;
     width: 100%;
     background-color: $brown-primary;
     color: $white-primary;
-    height: 20vh;
+    height: 25vh;
 
     .logo {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 40%;
+        width: 30%;
         color: $white-primary;
     }
 }
@@ -24,13 +24,14 @@ $white-primary: #dbcec3;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 50%;
+    width: 70%;
 
     .footer-map {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-flow: column nowrap;
+        width: 33%;
 
         .footer-titles {
             margin-bottom: .5em;
@@ -39,11 +40,13 @@ $white-primary: #dbcec3;
 
     .options-wrapper {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        flex-flow: row wrap;
         align-items: center;
-        width: 100%;
+        width: 70%;
 
         .footer-options {
+            padding: 0em .5em;
             font-size: 20px;
             color: $white-primary;
             text-decoration: none;

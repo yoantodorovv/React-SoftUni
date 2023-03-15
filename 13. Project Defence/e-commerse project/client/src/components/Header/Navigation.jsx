@@ -19,9 +19,9 @@ export const Navigation = () => {
                 <li className={styles['nav-btn-list-item']}>
                     <a className={styles['nav-btn-li-link']} href="men.html">Register</a>
                 </li>
-                <li className={styles['nav-btn-list-item']}>
+                {/* <li className={styles['nav-btn-list-item']}>
                     <a className={styles['nav-btn-li-link']} href="men.html">Logout</a>
-                </li>
+                </li> */}
             </ul>
         </nav>
     );
