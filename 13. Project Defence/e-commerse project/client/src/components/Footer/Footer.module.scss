@@ -9,9 +9,49 @@ $white-primary: #dbcec3;
     width: 100%;
     background-color: $brown-primary;
     color: $white-primary;
+    height: 20vh;
 
     .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
         color: $white-primary;
     }
 }
 
+.footer-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 50%;
+
+    .footer-map {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column nowrap;
+
+        .footer-titles {
+            margin-bottom: .5em;
+        }
+    }
+
+    .options-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+
+        .footer-options {
+            font-size: 20px;
+            color: $white-primary;
+            text-decoration: none;
+        }
+
+        .footer-options:hover {
+            color: $white-primary;
+            text-decoration: underline;
+        }
+    }
+}

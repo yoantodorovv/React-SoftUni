@@ -32,14 +32,25 @@ $white-primary: #dbcec3;
 
 .nav-btn-list-item {
     padding: 1em 2em;
-    background-color: $brown-primary;
+    border: 2px solid $brown-primary;
     border-radius: 25px;
+    transition: .2s ease-in;
 
     .nav-btn-li-link {
         font-size: 20px;
-        color: $white-primary;
+        color: $brown-primary;
         text-decoration: none;
     }
+}
+
+.nav-btn-list-item:hover {
+    background-color: $brown-primary;
+    cursor: pointer;
+}
+
+.nav-btn-list-item:hover .nav-btn-li-link {
+    color: $white-primary;
+    cursor: pointer;
 }
 
 

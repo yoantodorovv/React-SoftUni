@@ -7,8 +7,8 @@ const manImageSrc = "https://images.summitmedia-digital.com/esquiremagph/images/
 export const MainMenu = () => {
     return (
         <div className={styles['main-menu']}>
-            <HeroContainer imageSrc={womanImageSrc} containerText="Woman" />
-            <HeroContainer imageSrc={manImageSrc} containerText="Man" />
+            <HeroContainer imageSrc={womanImageSrc} containerText="Women" />
+            <HeroContainer imageSrc={manImageSrc} containerText="Men" />
         </div>
     );
 }
