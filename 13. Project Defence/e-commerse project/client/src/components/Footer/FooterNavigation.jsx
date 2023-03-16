@@ -1,5 +1,9 @@
-import styles from "./Footer.module.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
+
 import { FooterNavigationElement } from "./FooterNavigationElement";
+
+import styles from "./Footer.module.scss";
 
 export const FooterNavigation = () => {
     const pagesRoutes = {
@@ -23,15 +27,10 @@ export const FooterNavigation = () => {
             <FooterNavigationElement title="Your Profile" options={profileRoutes} />
             <div className="footer-map">
                 <h2 className={styles['footer-titles']}>Follow Us On</h2>
-                <div className={styles['img-wrapper']}>
-                    // TODO: Add FontAwesomeIcon
-                    {/* <FontAwesomeIcon icon="fa-brands fa-instagram" /> */}
-                </div>
-                <div className={styles['img-wrapper']}>
-
-                </div>
-                <div className={styles['img-wrapper']}>
-
+                <div className={styles['icon-wrapper']}>
+                    <FontAwesomeIcon className={styles['icon']} icon={faInstagram} size="2x" />
+                    <FontAwesomeIcon className={styles['icon']} icon={faTwitter} size="2x" />
+                    <FontAwesomeIcon className={styles['icon']} icon={faFacebook} size="2x" />
                 </div>
             </div>
         </div>
