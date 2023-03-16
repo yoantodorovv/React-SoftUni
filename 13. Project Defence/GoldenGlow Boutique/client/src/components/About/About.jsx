@@ -2,7 +2,8 @@ import { AboutTitle } from './AboutTitle'
 import { RightContent } from './RightContent'
 import { LeftContent } from './LeftContent'
 
-import styles from './styles/AboutTitle.module.scss'
+import stylesAbout from './styles/MainAbout.module.scss'
+import stylesTitle from './styles/AboutTitle.module.scss'
 
 //TODO: Extract content to DB everywhere!
 const content = {
@@ -22,7 +23,7 @@ const content = {
             content: 'At GoldenGlow Boutique, we are passionate about what we do and are committed to delivering the best shopping experience possible for our customers. We believe in offering a personalized approach to shopping, where our staff is knowledgeable, friendly, and ready to assist you in finding the perfect outfit. We want every customer to feel valued and special and go above and beyond to ensure that you leave our store feeling satisfied with your purchase.',
         },
         mission: {
-            imageUrl: 'https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80',
+            imageUrl: 'https://adventurekorea.com/wp-content/uploads/2021/12/image3-2.jpg',
             content: 'Our mission is to provide our customers with high-quality clothing at an affordable price. We strive to offer a wide range of styles that reflect the latest trends and classic designs, without sacrificing comfort, quality or style. We understand that clothes are more than just material on your body - they should be a reflection of your personality and individuality. That\'s why we offer unique and stylish pieces that are sure to make a statement.',
         }
     },
@@ -31,16 +32,16 @@ const content = {
 export const About = () => {
     return (
         <>
-            <section className={styles['about-wrapper']}>
+            <section className={stylesTitle['about-wrapper']}>
                 <AboutTitle title="About Us" subtitle="Welcome to GoldenGlow Boutique, where fashion meets affordability!" />
                 <RightContent imageUrl={content.right.welcome.imageUrl} content={content.right.welcome.content} />
                 <LeftContent imageUrl={content.left.passion.imageUrl} content={content.left.passion.content} />
                 <RightContent imageUrl={content.right.commitment.imageUrl} content={content.right.commitment.content} />
                 <LeftContent imageUrl={content.left.mission.imageUrl} content={content.left.mission.content} />
             </section>
-            <section className={styles['review']}>
+            <div className={stylesAbout['review-wrapper']}>
                 //TODO: review
-            </section>
+            </div>
         </>
     );
 }

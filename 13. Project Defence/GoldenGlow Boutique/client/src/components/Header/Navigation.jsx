@@ -23,15 +23,15 @@ export const Navigation = () => {
                 <li className={styles['nav-btn-list-item']}>
                     <NavLink 
                         className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} 
-                        to="/contact">
-                            Contact
+                        to="/catalog">
+                            Catalog
                     </NavLink>
                 </li>
                 <li className={styles['nav-btn-list-item']}>
                     <NavLink 
                         className={({isActive}) => isActive ? styles['nav-btn-li-link-selected'] : styles['nav-btn-li-link']} 
-                        to="/catalog">
-                            Catalog
+                        to="/contact">
+                            Contact
                     </NavLink>
                 </li>
                 <li>

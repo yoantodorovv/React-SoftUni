@@ -1,4 +1,6 @@
 $black-text: #413d38;
+$brown-primary: #6c3d1f;
+$white-primary: #dbcec3;
 
 .menu {
     display: flex;
@@ -58,4 +60,9 @@ $black-text: #413d38;
         padding-right: 3em;
         text-align: end;
     }
+}
+
+.review-wrapper {
+    border-top: 2px solid $brown-primary;
+    margin-bottom: 2em;
 }
