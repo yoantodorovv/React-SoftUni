@@ -14,6 +14,15 @@ $white-primary: #dbcec3;
         justify-content: center;
         width: 40%;
     }
+
+    .logo h1 {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 4em;
+        font-family: 'Caveat', cursive;
+        font-style: italic;
+    }
 }
 
 .nav {

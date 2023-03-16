@@ -19,6 +19,15 @@ $white-secondary: #9d928a;
         width: 30%;
         color: $white-primary;
     }
+
+    .logo h1 {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 4em;
+        font-family: 'Caveat', cursive;
+        font-style: italic;
+    }
 }
 
 .footer-nav {
