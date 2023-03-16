@@ -7,7 +7,7 @@ import styles from "./styles/MainAbout.module.scss"
 export const MainAbout = () => {
     const rightContent = {
         imageUrl: 'https://www.safe-urban.com/wp-content/uploads/2021/12/safe-urban-concept-paris-conceptstore-credit-rawcollectif-00036.jpg',
-        content: 'Welcome to our clothing store, where fashion meets affordability, individuality, and sustainability. We believe that fashion is more than just clothing - it\'s a way of expressing who you are and how you feel. We are dedicated to helping you find the perfect outfit that makes you look and feel your best, no matter what the occasion.'
+        content: 'Welcome to Golden Glow Boutique, where fashion meets affordability, individuality, and sustainability. We believe that fashion is more than just clothing - it\'s a way of expressing who you are and how you feel. We are dedicated to helping you find the perfect outfit that makes you look and feel your best, no matter what the occasion.'
     }
 
     const leftContent = {
@@ -17,7 +17,7 @@ export const MainAbout = () => {
 
     return (
         <section className={styles['about-wrapper']}>
-            <AboutTitle title="About Us" subtitle="Welcome to our clothing store, where fashion meets affordability!" />
+            <AboutTitle title="About Us" subtitle="Welcome to GoldenGlow Boutique, where fashion meets affordability!" />
             <RightContent imageUrl={rightContent.imageUrl} content={rightContent.content} />
             <LeftContent imageUrl={leftContent.imageUrl} content={leftContent.content} />
         </section>

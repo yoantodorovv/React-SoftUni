@@ -6,7 +6,7 @@ export const Header = () => {
     return (
         <header className={styles['header']}>
             <div className={styles['logo']}>
-                <h1>Rivet Clothing</h1>
+                <h1>GoldenGlow</h1>
             </div>
             <Navigation />
         </header>
