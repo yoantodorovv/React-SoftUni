@@ -12,8 +12,8 @@ const routes = {
         'About': '/about',
         'Contact': '/contact',
         'Catalog': '/catalog',
-        'Women': 'catalog/women',
-        'Men': 'catalog/men',
+        'Women': '/catalog/women',
+        'Men': '/catalog/men',
     },
     'profiles': {
         'Login': '/login',
