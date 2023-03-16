@@ -56,7 +56,7 @@ $white-secondary: #9d928a;
         width: 70%;
 
         .footer-options {
-            padding: 0em .5em;
+            padding: .3em .5em;
             font-size: 20px;
             color: $white-primary;
             text-decoration: none;
@@ -68,7 +68,7 @@ $white-secondary: #9d928a;
         }
 
         .footer-options-selected {
-            padding: 0em .5em;
+            padding: .3em .5em;
             font-size: 20px;
             color: $white-secondary;
             text-decoration: underline;
@@ -78,8 +78,13 @@ $white-secondary: #9d928a;
 
 .icon-wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    width: 70%;
+
+    .icon {
+        padding: .3em .5em;
+    }
 
     .icon:hover {
         color: $white-secondary
